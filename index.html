@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virginia Healthcare Navigator — Perpetual T. Adu</title>
+  <meta name="description" content="A free tool helping low-income families in Virginia find Medicaid, CHIP, and free clinic resources. Built by Perpetual T. Adu." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1>Virginia Healthcare Navigator</h1>
+      <p>Helping low-income families find healthcare coverage &amp; free clinics</p>
+      <p class="byline">Built by Perpetual T. Adu &nbsp;·&nbsp; Data: HRSA 2024 &amp; Virginia DMAS</p>
+    </header>
+
+    <!-- Chat Window -->
+    <main class="chat-container" role="main" aria-label="Healthcare Navigator Chatbot">
+
+      <!-- Header Bar -->
+      <div class="chat-header">
+        <div class="chat-header-icon" aria-hidden="true">🏥</div>
+        <div class="chat-header-text">
+          <h2>Healthcare Navigator</h2>
+          <p>Virginia Medicaid · CHIP · Free Clinics</p>
+        </div>
+        <div class="status-dot" title="Online" aria-label="Chatbot is online"></div>
+      </div>
+
+      <!-- Messages -->
+      <div class="messages" id="messages" role="log" aria-live="polite" aria-label="Chat messages"></div>
+
+      <!-- Quick Reply Buttons -->
+      <div class="quick-replies" id="quick-replies" role="group" aria-label="Quick reply suggestions"></div>
+
+      <!-- Input -->
+      <div class="input-area">
+        <label for="user-input" class="sr-only">Type your question</label>
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Ask about Medicaid, CHIP, free clinics..."
+          autocomplete="off"
+          aria-label="Type your question here"
+        />
+        <button id="send-btn" aria-label="Send message">
+          ➤
+        </button>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      Data sources: <a href="https://data.hrsa.gov" target="_blank">HRSA Health Center Data 2024</a> &nbsp;·&nbsp;
+      <a href="https://coverva.dmas.virginia.gov" target="_blank">Virginia DMAS</a> &nbsp;·&nbsp;
+      <a href="https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines" target="_blank">HHS FPL Guidelines 2026</a>
+    </footer>
+
+  </div>
+
+  <!-- Screen-reader utility class -->
+  <style>.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }</style>
+
+  <!-- Load chatbot logic as ES module (enables import/export in data.js) -->
+  <script type="module" src="script.js"></script>
+
+</body>
+</html>

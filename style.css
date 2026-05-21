@@ -1,0 +1,397 @@
+/* ============================================================
+   style.css — Healthcare Navigator
+   Built by Perpetual T. Adu
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Fraunces:ital,wght@0,300;0,600;1,300&display=swap');
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-dark:   #0a5c46;
+  --green-mid:    #0f6e56;
+  --green-light:  #1d9e75;
+  --green-pale:   #e1f5ee;
+  --green-accent: #5dcaa5;
+  --cream:        #faf8f4;
+  --warm-gray:    #f2ede6;
+  --text-dark:    #1a1a1a;
+  --text-mid:     #4a4a4a;
+  --text-muted:   #888;
+  --white:        #ffffff;
+  --shadow:       0 4px 24px rgba(10,92,70,0.10);
+  --radius:       16px;
+  --radius-sm:    10px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* ---------- Page Layout ---------- */
+.page-wrapper {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.page-header {
+  text-align: center;
+  padding: 1.5rem 1rem 0.5rem;
+}
+
+.page-header h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--green-dark);
+  line-height: 1.2;
+}
+
+.page-header p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+.byline {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ---------- Chat Container ---------- */
+.chat-container {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  height: 540px;
+  overflow: hidden;
+  border: 1px solid rgba(10,92,70,0.10);
+}
+
+/* ---------- Chat Header ---------- */
+.chat-header {
+  background: var(--green-mid);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.chat-header-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.chat-header-text h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.chat-header-text p {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.72);
+  margin-top: 1px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green-accent);
+  margin-left: auto;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(93,202,165,0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(93,202,165,0.3); }
+  50%       { box-shadow: 0 0 0 5px rgba(93,202,165,0.0); }
+}
+
+/* ---------- Messages Area ---------- */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  scroll-behavior: smooth;
+}
+
+.messages::-webkit-scrollbar { width: 4px; }
+.messages::-webkit-scrollbar-track { background: transparent; }
+.messages::-webkit-scrollbar-thumb { background: var(--green-pale); border-radius: 4px; }
+
+/* ---------- Message Bubbles ---------- */
+.message {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  animation: fadeUp 0.3s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.message.user { flex-direction: row-reverse; }
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.avatar.bot { background: var(--green-pale); color: var(--green-mid); font-size: 0.9rem; }
+.avatar.user { background: var(--green-mid); color: var(--white); font-weight: 600; font-size: 0.7rem; }
+
+.bubble {
+  max-width: 78%;
+  padding: 0.7rem 1rem;
+  border-radius: 18px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.bubble.bot {
+  background: var(--warm-gray);
+  color: var(--text-dark);
+  border-bottom-left-radius: 4px;
+}
+
+.bubble.user {
+  background: var(--green-mid);
+  color: var(--white);
+  border-bottom-right-radius: 4px;
+}
+
+/* Structured content inside bot bubbles */
+.bubble.bot h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin: 0.6rem 0 0.3rem;
+}
+
+.bubble.bot h3:first-child { margin-top: 0; }
+
+.bubble.bot ul {
+  padding-left: 1.1rem;
+  margin: 0.3rem 0;
+}
+
+.bubble.bot ul li { margin-bottom: 0.2rem; }
+
+.bubble.bot a {
+  color: var(--green-mid);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.clinic-card {
+  background: var(--white);
+  border: 1px solid rgba(10,92,70,0.12);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  margin: 0.4rem 0;
+  font-size: 0.82rem;
+}
+
+.clinic-card strong { color: var(--green-dark); display: block; margin-bottom: 0.2rem; }
+.clinic-card .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 0.4rem; }
+
+.tag {
+  font-size: 0.68rem;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: var(--green-pale);
+  color: var(--green-dark);
+  font-weight: 500;
+}
+
+.eligibility-result {
+  background: var(--white);
+  border-left: 3px solid var(--green-accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.65rem 0.85rem;
+  margin: 0.4rem 0;
+  font-size: 0.82rem;
+}
+
+.eligibility-result .program-name {
+  font-weight: 600;
+  color: var(--green-dark);
+  margin-bottom: 0.2rem;
+}
+
+.eligibility-result .apply-link {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--green-mid);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.eligibility-result .apply-link:hover { text-decoration: underline; }
+
+/* ---------- Typing Indicator ---------- */
+.typing {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  animation: fadeUp 0.3s ease forwards;
+}
+
+.typing-dots {
+  background: var(--warm-gray);
+  border-radius: 18px;
+  border-bottom-left-radius: 4px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.typing-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: bounce 1.2s infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0);   opacity: 0.4; }
+  40%            { transform: translateY(-6px); opacity: 1;   }
+}
+
+/* ---------- Quick Replies ---------- */
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0 1rem 0.75rem;
+  flex-shrink: 0;
+}
+
+.quick-reply {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 99px;
+  border: 1.5px solid var(--green-mid);
+  background: var(--white);
+  color: var(--green-dark);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-weight: 500;
+}
+
+.quick-reply:hover {
+  background: var(--green-pale);
+  border-color: var(--green-dark);
+}
+
+/* ---------- Input Area ---------- */
+.input-area {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(10,92,70,0.08);
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-shrink: 0;
+  background: var(--white);
+}
+
+#user-input {
+  flex: 1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  border: 1.5px solid rgba(10,92,70,0.15);
+  border-radius: 99px;
+  padding: 0.55rem 1rem;
+  outline: none;
+  background: var(--cream);
+  color: var(--text-dark);
+  transition: border-color 0.2s;
+}
+
+#user-input:focus { border-color: var(--green-mid); }
+#user-input::placeholder { color: var(--text-muted); }
+
+#send-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--green-mid);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1rem;
+  transition: background 0.18s ease, transform 0.1s;
+  flex-shrink: 0;
+}
+
+#send-btn:hover  { background: var(--green-dark); }
+#send-btn:active { transform: scale(0.93); }
+
+/* ---------- Footer ---------- */
+.page-footer {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding-bottom: 1rem;
+}
+
+.page-footer a {
+  color: var(--green-mid);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .chat-container { height: 100dvh; border-radius: 0; }
+  body { padding: 0; align-items: stretch; justify-content: stretch; }
+  .page-wrapper { max-width: 100%; gap: 0; }
+  .page-header { display: none; }
+  .page-footer { display: none; }
+}
