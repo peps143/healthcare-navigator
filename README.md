@@ -4,7 +4,7 @@
 
 A conversational AI chatbot that helps low-income families in Virginia navigate the U.S. healthcare system — finding free clinics, understanding Medicaid and CHIP eligibility, and connecting families with real resources.
 
-🔗 **[Live Demo →](https://your-netlify-url.netlify.app)** *(update after deployment)*
+🔗 **[Live Demo →](https://neon-chebakia-6db908.netlify.app)** *(update after deployment)*
 
 ---
 
