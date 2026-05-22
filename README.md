@@ -51,7 +51,7 @@ Millions of low-income families in Virginia struggle to understand what healthca
   - FAMIS MOMS (pregnant): 143–205% FPL
 
 ### 3. Federal Poverty Level Guidelines (2026)
-- **URL:** https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines
+- **URL:** https://www.federalregister.gov/documents/2026/01/15/2026-00755/annual-update-of-the-hhs-poverty-guidelines
 - **Source:** U.S. Department of Health & Human Services (HHS)
 - **Used for:** Eligibility math engine
   - Base (household of 1): $15,060/year
